@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- META SECTIONf -->
+    <!-- META SECTION -->
     <title>Joli Admin - Responsive Bootstrap Admin Template</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />

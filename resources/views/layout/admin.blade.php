@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <!-- META SECTION -->
-    <title>Joli Admin - Responsive Bootstrap Admin Template</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -316,14 +315,11 @@
         <!-- END X-NAVIGATION VERTICAL -->
 
         <!-- START BREADCRUMB -->
-        <ul class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li class="active">Dashboard</li>
-        </ul>
+
         <!-- END BREADCRUMB -->
 
         <!-- PAGE CONTENT WRAPPER -->
-    @yield('content')
+     @yield('content')
         <!-- END PAGE CONTENT WRAPPER -->
     </div>
     <!-- END PAGE CONTENT -->
@@ -349,12 +345,12 @@
     </div>
 </div>
 <!-- END MESSAGE BOX-->
-
+@yield('script')
 <!-- START PRELOADS -->
 <audio id="audio-alert" src="{{asset('admin/audio/alert.mp3')}}" preload="auto"></audio>
 <audio id="audio-fail" src="{{asset('admin/audio/fail.mp3')}}" preload="auto"></audio>
 <!-- END PRELOADS -->
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <!-- START SCRIPTS -->
 <!-- START PLUGINS -->
 <script type="text/javascript" src="{{asset('admin/js/plugins/jquery/jquery.min.js')}}"></script>
@@ -379,13 +375,13 @@
 <script type="text/javascript" src="{{asset('admin/js/plugins/moment.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/daterangepicker/daterangepicker.js')}}"></script>
 <!-- END THIS PAGE PLUGINS-->
-
+<script type="text/javascript" src="{{asset('admin/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <!-- START TEMPLATE -->
 <script type="text/javascript" src="{{asset('admin/js/settings.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('admin/js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/actions.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('admin/js/development.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/demo_dashboard.js')}}"></script>
 <!-- END TEMPLATE -->
 <!-- END SCRIPTS -->

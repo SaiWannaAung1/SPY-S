@@ -50,7 +50,7 @@ class MainCategoriesController extends Controller
         $m_cat->name =$request->input('mCat_name');
         $m_cat->updated_at = $current_timestamp;
         $m_cat->save();
-        return redirect(action('MainCategoriesController@index')) ->with('status','The Main Category has been updated!');
+        return redirect(action('MainCategoriesController@index')) ->with('status','The Main Category has been updated');
     }
 
     public function destroy($slug)
@@ -59,4 +59,6 @@ class MainCategoriesController extends Controller
         $mCat->delete();
         return redirect('/admin/main_category')->with('status', 'The Main Category '.$slug.' has been deleted!');
     }
+
+
 }

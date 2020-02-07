@@ -47,7 +47,7 @@
                       <td>{{$m_cat->name}}</td>
                       <td>{{$m_cat->created_at}}</td>
                       <td>{{$m_cat->updated_at}}</td>
-                      <td><button class="btn btn-sm " style="background-color: #1caf9a; border-radius: 3px" >&nbsp;<i class="fa fa-plus" style="color: white"> </i></button></td>
+                      <td><button class="btn btn-sm " style="background-color: #1caf9a; border-radius: 3px" onclick="addSubCat('{{$m_cat->slug}}','{{$m_cat->name}}')  ">&nbsp;<i class="fa fa-plus" style="color: white"> </i></button></td>
                       <td>
                           <button class="btn btn-sm " style="background-color: #ff9728; border-radius: 3px" onclick="editMCat('{{$m_cat->slug}}','{{$m_cat->name}}')  ">&nbsp;<i class="fa fa-edit" style="color: white" > </i></button>
                       </td>
@@ -131,7 +131,7 @@
 
 {{---------------------------end of Modal----------------------------------------}}
 
- {{---------------------------Star edit Main Categories  Modal-------------------------------------------}}
+ {{---------------------------Start edit Main Categories  Modal-------------------------------------------}}
     <div class="modal fade" id="editMCat" role="dialog">
         <div class="modal-dialog">
 
@@ -139,7 +139,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Create Main Category</h4>
+                    <h4 class="modal-title">Update Main Category</h4>
                 </div>
                 <div class="modal-body">
 
@@ -189,6 +189,69 @@
 
 
 {{---------------------------end of Modal----------------------------------------}}
+
+    {{---------------------------Start add sub categories-------------------------------------------}}
+    <div class="modal fade" id="addSubCat" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="mCat"></h4>
+                </div>
+                <div class="modal-body">
+
+
+
+                    <form action="{{action('MainCategoriesController@update')}}" method="POST" >
+                        @csrf
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <input type="hidden"  id="subCat_slug" name="subCat_slug" class="form-control" />
+                                            <input type="hidden"  id="subCat_token"  class="form-control" value="{{csrf_token()}}" />
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="subCat_name" id="subCat_name" class="form-control" placeholder="Enter Sub Category Name"/>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <button type="reset" class="btn btn-warning float-left " style="border-radius: 3px; ">Rest</button>
+                                        <button type="submit" class="btn btn-info float-right" style="border-radius: 3px;">Create</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    {{---------------------------end of Modal----------------------------------------}}
+
+
+
+
 @endsection
 
 @section('script')
@@ -199,6 +262,13 @@
         $("#mCat_name").val(name);
 
     }
+
+    function addSubCat(slug, name) {
+        $("#addSubCat").modal("show");
+        $("#subCat_slug").val(slug);
+        $("#mCat").text("Create Sub Category for "+name);
+    }
+
     {{--function startEdit(e) {--}}
     {{--    e.preventDefault();--}}
     {{--    let  name = $("#mCat_name").val();--}}

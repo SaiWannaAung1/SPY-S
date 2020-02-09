@@ -30,6 +30,7 @@
                             <tr>
                                 <th class="text-center">ID</th>
                                 <th class="text-center">Main Category Name</th>
+                                <th class="text-center">Sub Category</th>
                                 <th class="text-center">Created Date</th>
                                 <th class="text-center">Updated Date</th>
                                 <th class="text-center">Create Sub Category</th>
@@ -45,9 +46,10 @@
 
                       <td>{{$id++}}</td>
                       <td>{{$m_cat->name}}</td>
+                      <td><a href=""><i class="fa fa-list-alt" ></i></a></td>
                       <td>{{$m_cat->created_at}}</td>
                       <td>{{$m_cat->updated_at}}</td>
-                      <td><button class="btn btn-sm " style="background-color: #1caf9a; border-radius: 3px" onclick="addSubCat('{{$m_cat->slug}}','{{$m_cat->name}}')  ">&nbsp;<i class="fa fa-plus" style="color: white"> </i></button></td>
+                      <td><button class="btn btn-sm " style="background-color: #1caf9a; border-radius: 3px" onclick="addSubCat('{{$m_cat->slug}}','{{$m_cat->name}}','{{$m_cat->id}}')  ">&nbsp;<i class="fa fa-plus" style="color: white"> </i></button></td>
                       <td>
                           <button class="btn btn-sm " style="background-color: #ff9728; border-radius: 3px" onclick="editMCat('{{$m_cat->slug}}','{{$m_cat->name}}')  ">&nbsp;<i class="fa fa-edit" style="color: white" > </i></button>
                       </td>
@@ -198,13 +200,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title" id="mCat"></h4>
+                    <h4 class="modal-title" id="mCatname"></h4>
                 </div>
                 <div class="modal-body">
 
 
 
-                    <form action="{{action('MainCategoriesController@update')}}" method="POST" >
+                    <form action="{{action('SubCategoriesController@store')}}" method="POST" >
                         @csrf
 
                         <div class="row">
@@ -215,6 +217,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <input type="hidden"  id="subCat_slug" name="subCat_slug" class="form-control" />
+                                            <input type="hidden"  id="mCat_id" name="mCat_id" class="form-control" />
                                             <input type="hidden"  id="subCat_token"  class="form-control" value="{{csrf_token()}}" />
                                             <div class="input-group">
                                                 <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
@@ -263,10 +266,14 @@
 
     }
 
-    function addSubCat(slug, name) {
+    function addSubCat(slug, name,id) {
         $("#addSubCat").modal("show");
+        console.log("subCat_slug"+slug);
+        console.log("mCat_name"+name);
+        console.log("mCat id "+id);
         $("#subCat_slug").val(slug);
-        $("#mCat").text("Create Sub Category for "+name);
+        $("#mCat_id").val(id);
+        $("#mCatname").text("Create Sub Category for "+name);
     }
 
     {{--function startEdit(e) {--}}

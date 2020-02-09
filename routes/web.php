@@ -18,3 +18,6 @@ Route::get('/admin/main_category','MainCategoriesController@index');
 Route::post('/admin/main_category','MainCategoriesController@store');
 Route::post('/admin/main_category_delete/{slug?}/delete','MainCategoriesController@destroy');
 Route::post('/admin/main_category/update','MainCategoriesController@update');
+
+Route::post('/admin/sub_category','SubCategoriesController@store');
+Route::post('/admin/{slug?}/sub_category','SubCategoriesController@index');

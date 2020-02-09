@@ -23,7 +23,7 @@ class MainCategoriesController extends Controller
     {
         $slug = uniqid();
         MainCategories::create([
-            'name'=>$request->get('mCat_name'),
+            'name'=>$request->get('subCat_name'),
             'slug' => $slug
         ]);
         return redirect('/admin/main_category')->with('status','Main Category is successfully created' );

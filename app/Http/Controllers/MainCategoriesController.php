@@ -42,7 +42,7 @@ class MainCategoriesController extends Controller
     }
 
 
-    public function update(Request $request)
+    public function update(MainCategoriesRequest $request)
     {
         $current_timestamp = Carbon::now()->timestamp;
         $slug =   $request->input('mCat_slug');

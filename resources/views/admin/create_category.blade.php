@@ -147,7 +147,7 @@
 
 
 
-                    <form action="{{action('MainCategoriesController@update')}}" method="POST" >
+                    <form action="/admin/main_category/update" method="POST" >
         @csrf
 
                         <div class="row">

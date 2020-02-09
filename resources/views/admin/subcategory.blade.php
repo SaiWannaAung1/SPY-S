@@ -48,7 +48,7 @@
                       <td>{{$sub_cat->updated_at}}</td>
 
                       <td>
-                          <button class="btn btn-sm " style="background-color: #ff9728; border-radius: 3px" onclick="editMCat('{{$sub_cat->slug}}','{{$sub_cat->name}}')  ">&nbsp;<i class="fa fa-edit" style="color: white" > </i></button>
+                          <button class="btn btn-sm " style="background-color: #ff9728; border-radius: 3px" onclick="editSCat('{{$main_id}}','{{$main_CatName}}','{{$sub_cat->slug}}','{{$sub_cat->name}}')">&nbsp;<i class="fa fa-edit" style="color: white" > </i></button>
                       </td>
                       <td >
 
@@ -75,84 +75,77 @@
 
 
 
-{{-- --}}{{---------------------------Start edit Main Categories  Modal-------------------------------------------}}
-{{--    <div class="modal fade" id="editMCat" role="dialog">--}}
-{{--        <div class="modal-dialog">--}}
+{{-- -------------------------Start edit Main Categories  Modal-------------------------------------------}}
+    <div class="modal fade" id="editSCat" role="dialog">
+        <div class="modal-dialog">
 
-{{--            <!-- Modal content-->--}}
-{{--            <div class="modal-content">--}}
-{{--                <div class="modal-header">--}}
-{{--                    <button type="button" class="close" data-dismiss="modal">&times;</button>--}}
-{{--                    <h4 class="modal-title">Update Main Category</h4>--}}
-{{--                </div>--}}
-{{--                <div class="modal-body">--}}
-
-
-
-{{--                    <form action="{{action('MainCategoriesController@update')}}" method="POST" >--}}
-{{--        @csrf--}}
-
-{{--                        <div class="row">--}}
-{{--                            <div class="col-md-12">--}}
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Sub Category</h4>
+                </div>
+                <div class="modal-body">
 
 
-{{--                                <div class="card">--}}
-{{--                                    <div class="card-body">--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <input type="hidden"  id="mCat_slug" name="mCat_slug" class="form-control" />--}}
-{{--                                            <input type="hidden"  id="mCat_token"  class="form-control" value="{{csrf_token()}}" />--}}
-{{--                                                <div class="input-group">--}}
-{{--                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>--}}
-{{--                                                    <input type="text" name="mCat_name" id="mCat_name" class="form-control" placeholder="Enter Main Category Name"/>--}}
 
-{{--                                                </div>--}}
+                    <form action="{{action('SubCategoriesController@update')}}" method="POST" >
+        @csrf
+
+                        <div class="row">
+                            <div class="col-md-12">
 
 
-{{--                                        </div>--}}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <input type="hidden"  id="sCat_slug" name="sCat_slug" class="form-control" />
+                                            <input type="hidden"  id="main_id" name="main_id" class="form-control" />
+                                            <input type="hidden"  id="main_CatName" name="main_CatName" class="form-control" />
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                    <input type="text" name="sCat_name" id="sCat_name" class="form-control" placeholder="Enter Main Category Name"/>
+
+                                                </div>
+
+                                        </div>
+                                        <button type="reset" class="btn btn-warning float-left " style="border-radius: 3px; ">Rest</button>
+                                        <button type="submit" class="btn btn-info float-right" style="border-radius: 3px;">Update</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
 
 
-{{--                                        <button type="reset" class="btn btn-warning float-left " style="border-radius: 3px; ">Rest</button>--}}
-{{--                                        <button type="submit" class="btn btn-info float-right" style="border-radius: 3px;">Update</button>--}}
-{{--                                    </div>--}}
+                </div>
 
-{{--                                </div>--}}
+            </div>
 
-{{--                            </div>--}}
+        </div>
+    </div>
 
-{{--                        </div>--}}
-
-{{--                    </form>--}}
-
-
-{{--                </div>--}}
-
-{{--            </div>--}}
-
-{{--        </div>--}}
-{{--    </div>--}}
-
-{{--    --}}{{---------------------------end of Modal----------------------------------------}}
+{{--    -------------------------end of Modal----------------------------------------}}
 
 @endsection
 
 @section('script')
 <script>
-    function editMCat(slug, name) {
-        $("#editMCat").modal("show");
-        $("#mCat_slug").val(slug);
-        $("#mCat_name").val(name);
+    function editSCat(main_id,main_CatName,slug, name) {
+        $("#editSCat").modal("show");
+        $("#main_id").val(main_id);
+        $("#main_CatName").val(main_CatName);
+
+        $("#sCat_slug").val(slug);
+        $("#sCat_name").val(name);
 
     }
 
-    function addSubCat(slug, name,id) {
-        $("#addSubCat").modal("show");
-        console.log("subCat_slug"+slug);
-        console.log("mCat_name"+name);
-        console.log("mCat id "+id);
-        $("#subCat_slug").val(slug);
-        $("#mCat_id").val(id);
-        $("#mCatname").text("Create Sub Category for "+name);
-    }
+
 
 </script>
 

@@ -53,11 +53,11 @@ class MainCategoriesController extends Controller
         return redirect(action('MainCategoriesController@index')) ->with('status','The Main Category has been updated');
     }
 
-    public function destroy($slug)
+    public function destroy($main_id,$main_CatName,$slug)
     {
         $mCat = MainCategories::whereSlug($slug)->first();
         $mCat->delete();
-        return redirect('/admin/main_category')->with('status', 'The Main Category '.$slug.' has been deleted!');
+        return redirect('/admin/'.$main_id.'/'.$main_CatName.'/sub_category')->with('status', 'The Main Category '.$slug.' has been deleted!');
     }
 
 

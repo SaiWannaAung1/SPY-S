@@ -46,7 +46,7 @@
 
                       <td>{{$id++}}</td>
                       <td>{{$m_cat->name}}</td>
-                      <td><a href=""><i class="fa fa-list-alt" ></i></a></td>
+                      <td><a href="/admin/{{$m_cat->id}}/{{$m_cat->name}}/sub_category"><i class="fa fa-list-alt" ></i></a></td>
                       <td>{{$m_cat->created_at}}</td>
                       <td>{{$m_cat->updated_at}}</td>
                       <td><button class="btn btn-sm " style="background-color: #1caf9a; border-radius: 3px" onclick="addSubCat('{{$m_cat->slug}}','{{$m_cat->name}}','{{$m_cat->id}}')  ">&nbsp;<i class="fa fa-plus" style="color: white"> </i></button></td>

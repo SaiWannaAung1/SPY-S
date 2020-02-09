@@ -20,4 +20,5 @@ Route::post('/admin/main_category_delete/{slug?}/delete','MainCategoriesControll
 Route::post('/admin/main_category/update','MainCategoriesController@update');
 
 Route::post('/admin/sub_category','SubCategoriesController@store');
-Route::post('/admin/{slug?}/sub_category','SubCategoriesController@index');
+Route::get('/admin/{id}/{name?}/sub_category','SubCategoriesController@index');
+Route::post('/admin/sub_category_delete/{id}/{name}/{slug}/delete','SubCategoriesController@destroy');

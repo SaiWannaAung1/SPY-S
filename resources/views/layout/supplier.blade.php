@@ -8,8 +8,9 @@
 
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- END META SECTION -->
-<title>@yield('title')</title>
+    <title>@yield('title')</title>
     <!-- CSS INCLUDE -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" id="theme" href="{{asset('admin/css/theme-default.css')}}"/>
     <!-- EOF CSS INCLUDE -->
 </head>
@@ -19,18 +20,18 @@
 
 @include('layout.backend_sidebar')
 
-    <!-- PAGE CONTENT -->
+<!-- PAGE CONTENT -->
     <div class="page-content">
 
     @include('layout.backend_nav')
 
-        <!-- START BREADCRUMB -->
+    <!-- START BREADCRUMB -->
 
         <!-- END BREADCRUMB -->
 
         <!-- PAGE CONTENT WRAPPER -->
-     @yield('content')
-        <!-- END PAGE CONTENT WRAPPER -->
+    @yield('content')
+    <!-- END PAGE CONTENT WRAPPER -->
     </div>
     <!-- END PAGE CONTENT -->
 </div>
@@ -55,12 +56,12 @@
     </div>
 </div>
 <!-- END MESSAGE BOX-->
-@yield('script')
+
 <!-- START PRELOADS -->
 <audio id="audio-alert" src="{{asset('admin/audio/alert.mp3')}}" preload="auto"></audio>
 <audio id="audio-fail" src="{{asset('admin/audio/fail.mp3')}}" preload="auto"></audio>
 <!-- END PRELOADS -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <!-- START SCRIPTS -->
 <!-- START PLUGINS -->
 <script type="text/javascript" src="{{asset('admin/js/plugins/jquery/jquery.min.js')}}"></script>
@@ -71,30 +72,22 @@
 <!-- START THIS PAGE PLUGINS-->
 <script type='text/javascript' src="{{asset('admin/js/plugins/icheck/icheck.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/scrolltotop/scrolltopcontrol.js')}}"></script>
 
-<script type="text/javascript" src="{{asset('admin/js/plugins/morris/raphael-min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/morris/morris.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/rickshaw/d3.v3.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/rickshaw/rickshaw.min.js')}}"></script>
-<script type='text/javascript' src='{{asset('admin/js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}'></script>
-<script type='text/javascript' src='{{asset('admin/js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}'></script>
-<script type='text/javascript' src='{{asset('admin/js/plugins/bootstrap/bootstrap-datepicker.js')}}'></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/owl/owl.carousel.min.js')}}"></script>
 
-<script type="text/javascript" src="{{asset('admin/js/plugins/moment.min.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/plugins/daterangepicker/daterangepicker.js')}}"></script>
-<!-- END THIS PAGE PLUGINS-->
-<script type="text/javascript" src="{{asset('admin/js/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('admin/js/plugins/dropzone/dropzone.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
+<!-- END SCRIPTS -->
+<script type="text/javascript" src="{{asset('admin/js/plugins/summernote/summernote.js')}}"></script>
 <!-- START TEMPLATE -->
 <script type="text/javascript" src="{{asset('admin/js/settings.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('admin/js/plugins.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/js/actions.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/development.js')}}"></script>
-<script type="text/javascript" src="{{asset('admin/js/demo_dashboard.js')}}"></script>
+
 <!-- END TEMPLATE -->
-<!-- END SCRIPTS -->
+@yield('script')
 </body>
 </html>
 

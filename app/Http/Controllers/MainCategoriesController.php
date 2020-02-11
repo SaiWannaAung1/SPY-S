@@ -32,7 +32,7 @@ class MainCategoriesController extends Controller
 
     public function show(MainCategories $mainCategories)
     {
-        //
+        // There
     }
 
 
@@ -45,7 +45,7 @@ class MainCategoriesController extends Controller
     public function update(MainCategoriesRequest $request)
     {
         $current_timestamp = Carbon::now()->timestamp;
-        $slug =   $request->input('mCat_slug');
+        $slug =  $request->input('mCat_slug');
         $m_cat = MainCategories::whereSlug($slug)->first();
         $m_cat->name =$request->input('mCat_name');
         $m_cat->updated_at = $current_timestamp;

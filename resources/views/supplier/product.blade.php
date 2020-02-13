@@ -4,7 +4,7 @@
 @section('content')
     <!-- PAGE CONTENT -->
 
-
+    @include('layout.message')
     <form action="/supplier/create_product" class="form-horizontal" enctype="multipart/form-data" method="post">
         @csrf
         <div class="panel panel-default">
@@ -30,7 +30,7 @@
                     <div class="col-md-6 col-xs-12">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="fa fa-dollar"></span></span>
-                            <input type="text" class="form-control" name="price"/>
+                            <input type="number" class="form-control" name="price"/>
                         </div>
                     </div>
                 </div>

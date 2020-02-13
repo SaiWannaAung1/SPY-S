@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('client.index');
+
 });
 
 ////////////supplier/////////////////////////////////////////////////////
@@ -33,3 +33,15 @@ Route::post('/admin/sub_category_delete/{id}/{name}/{slug}/delete','SubCategorie
 Route::post('/admin/sub_category/update','SubCategoriesController@update');
 ////////////admin/////////////////////////////////////////////////////
 
+////////////public/////////////////////////////////////////////////////
+Route::get('/','HomeController@index');
+Route::get('/products/{slug}','ProductsDetailController@index');
+Route::get('/auth/usersRegister','UsersRegisterController@index');
+
+
+
+////////////public/////////////////////////////////////////////////////
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

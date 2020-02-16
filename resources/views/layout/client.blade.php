@@ -116,6 +116,37 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="contact.html">Contact</a>
                                 </li>
+                                @guest
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    </li>
+                                    @if (Route::has('register'))
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                        </li>
+                                    @endif
+                                @else
+                                    <li class="nav-item dropdown">
+                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                            {{ Auth::user()->name }} <span class="caret"></span>
+                                        </a>
+
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                                {{ __('Logout') }}
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
+
+
+
                             </ul>
                         </div>
 
@@ -163,24 +194,6 @@
 </header>
 <!--================Header Menu Area =================-->
 
-<!--================Home Banner Area =================-->
-<section class="home_banner_area">
-    <div class="overlay"></div>
-    <div class="banner_inner d-flex align-items-center">
-        <div class="container">
-            <div class="banner_content row">
-                <div class="offset-lg-2 col-lg-8">
-                    <h3>Fashion for
-                        <br />Upcoming Winter</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-                    <a class="white_bg_btn" href="#">View Collection</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--================End Home Banner Area =================-->
 
 
 @yield('content')

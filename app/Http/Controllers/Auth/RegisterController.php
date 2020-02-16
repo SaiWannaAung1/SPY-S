@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UsersRequest;
+use \Illuminate\Http\Request;
+
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -62,12 +65,21 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(array $data,UsersRequest $request)
     {
-        return User::create([
+        $slug = uniqid();
+        $file = $request->file('image');
+        $filename = uniqid().'_'.$file->getClientOriginalName();
+        $file->move(public_path().'/uploads/',$filename);
+         User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'slug' => $slug,
+            'image' => $filename,
+            'gender' => $data['gender'],
+            'address' => $data['address'],
+            'password' => Hash::make($data['password'])
         ]);
+        return redirect('/supplier/create_product')->with('status','Product is successfully created' );
     }
 }

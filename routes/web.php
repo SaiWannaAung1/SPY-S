@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-
-});
+//Route::get('/', function () {
+//
+//});
 
 ////////////supplier/////////////////////////////////////////////////////
 Route::get('/supplier/create_product','ProductsController@index');
@@ -34,14 +34,12 @@ Route::post('/admin/sub_category/update','SubCategoriesController@update');
 ////////////admin/////////////////////////////////////////////////////
 
 ////////////public/////////////////////////////////////////////////////
-Route::get('/','HomeController@index');
+Route::get('/','ProductsController@home');
 Route::get('/products/{slug}','ProductsDetailController@index');
 Route::get('/auth/usersRegister','UsersRegisterController@index');
-
-
 
 ////////////public/////////////////////////////////////////////////////
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

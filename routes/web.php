@@ -15,6 +15,8 @@
 //
 //});
 
+Route::get('{any}','SpaController@index')->where('any','.*');
+
 ////////////supplier/////////////////////////////////////////////////////
 Route::get('/supplier/create_product','ProductsController@index');
 Route::get('/catSelete','ProductsController@catSelete');

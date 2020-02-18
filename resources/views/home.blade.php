@@ -11,27 +11,6 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-light">
-    <ul class="navbar-nav">
-        <li class="nav-item">
-
-            <a class="nav-link" href="/testhome">Link 1</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 3</a>
-        </li>
-    </ul>
-</nav>
-<br>
-
-<div class="container-fluid">
-    <h3>Basic Navbar Example</h3>
-    <p>A navigation bar is a navigation header that is placed at the top of the page.</p>
-    <p>The navbar-expand-xl|lg|md|sm class determines when the navbar should stack vertically (on extra large, large, medium or small screens).</p>
-</div>
 
 <div id="app">
     <app></app>

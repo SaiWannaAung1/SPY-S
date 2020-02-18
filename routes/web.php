@@ -15,7 +15,7 @@
 //
 //});
 
-Route::get('{any}','SpaController@index')->where('any','.*');
+//Route::get('/vuetest','SpaController@index');
 
 ////////////supplier/////////////////////////////////////////////////////
 Route::get('/supplier/create_product','ProductsController@index');
@@ -41,7 +41,7 @@ Route::get('/products/{slug}','ProductsDetailController@index');
 Route::get('/auth/usersRegister','UsersRegisterController@index');
 
 ////////////public/////////////////////////////////////////////////////
-
+//Route::post( '/createuser', 'Auth\RegisterController@userCreate' )->name( 'createuser' );
 Auth::routes();
 
 

@@ -48,7 +48,7 @@
                                         <i class="lnr lnr-eye"></i>
                                     </a>
                                     <a href="#">
-                                        <i class="lnr lnr-cart"></i>
+                                        <i class="lnr lnr-cart" onclick="addToCart('{{$product->id}}')"></i>
                                     </a>
                                 </div>
                             </div>
@@ -73,3 +73,4 @@
 
 
 @endsection
+

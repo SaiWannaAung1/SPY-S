@@ -11,9 +11,9 @@
 |
 */
 
-//Route::get('/', function () {
-//
-//});
+Route::get('/vuehome', function () {
+return view("home");
+});
 
 //Route::get('/vuetest','SpaController@index');
 
@@ -39,6 +39,8 @@ Route::post('/admin/sub_category/update','SubCategoriesController@update');
 Route::get('/','ProductsController@home');
 Route::get('/products/{slug}','ProductsDetailController@index');
 Route::get('/auth/usersRegister','UsersRegisterController@index');
+Route::get('/shoppingCart','ShoppingCartController@index');
+Route::post('/shoppingCart','ShoppingCartController@cart');
 
 ////////////public/////////////////////////////////////////////////////
 //Route::post( '/createuser', 'Auth\RegisterController@userCreate' )->name( 'createuser' );

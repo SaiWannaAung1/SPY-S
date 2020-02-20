@@ -2751,6 +2751,37 @@ h6 {
     background: transparent;
     color: #1641ff; }
 
+
+
+.warncan_btn {
+  display: inline-block;
+  background: #ff9728;
+  padding: 0px 30px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 48px;
+  border: 1px solid #ff9728;
+  border-radius: 0px;
+  outline: none !important;
+  box-shadow: none !important;
+  text-align: center;
+  border: 1px solid #ff9728;
+  cursor: pointer;
+  transition: all 300ms linear 0s;
+  border-radius: 5px; }
+  .warncan_btn:hover {
+    background: transparent;
+    color: #ff9728; }
+
+
+
+
+
+
+
+
 .main_btn2 {
   display: inline-block;
   background: #1641ff;

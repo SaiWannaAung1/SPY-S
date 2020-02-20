@@ -13,7 +13,7 @@
 
 
 <div id="app">
-    <app></app>
+    <main-app/>
 </div>
 
 

@@ -19,6 +19,7 @@
     <!-- main css -->
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
+
 </head>
 
 <body>
@@ -180,6 +181,7 @@
                                 <li class="nav-item">
                                     <a href="#" class="icons">
                                         <i class="lnr lnr lnr-cart"></i>
+                                        <span  id="cart_count">0</span>
                                     </a>
                                 </li>
 
@@ -291,9 +293,10 @@
 <!--================ End footer Area  =================-->
 
 
-
+@yield('script')
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="{{asset('js/custom.js')}}"></script>
 <script src="{{asset('client/js/jquery-3.2.1.min.js')}}"></script>
 <script src="{{asset('client/js/popper.js')}}"></script>
 <script src="{{asset('client/js/bootstrap.min.js')}}"></script>

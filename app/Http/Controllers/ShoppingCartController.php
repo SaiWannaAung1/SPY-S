@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ShoppingCartController extends Controller
 {
@@ -18,17 +19,18 @@ class ShoppingCartController extends Controller
     }
 
     public function cart(Request $request){
-        $post = $request->all();
-        $items = $post->cart;
+//        $post = $request->all();
+        $items = $request->get('cart');
         $carts = [];
         foreach ($items as $item){
-            $product = Product::where("id",$item)->first();
+//            $product = Product::where("id",$item)->first();
+            $product = DB::table('products')->where('id',$item)->first();
             $product->qty =1;
             array_push($carts,$product);
         }
 
         echo json_encode($carts);
-        exit;
+
     }
 
 

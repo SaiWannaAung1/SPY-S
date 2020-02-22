@@ -44,6 +44,8 @@ Route::post('/shoppingCart','ShoppingCartController@cart');
 
 ////////////public/////////////////////////////////////////////////////
 //Route::post( '/createuser', 'Auth\RegisterController@userCreate' )->name( 'createuser' );
+
+
 Auth::routes();
 
 

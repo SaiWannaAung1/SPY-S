@@ -121,7 +121,7 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                     </li>
-                                    @if (Route::has('register'))
+                                      @if (Route::has('register'))
                                         <li class="nav-item">
                                             <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                         </li>
@@ -179,7 +179,7 @@
                                 <hr>
 
                                 <li class="nav-item">
-                                    <a href="#" class="icons">
+                                    <a href="/shoppingCart" class="icons">
                                         <i class="lnr lnr lnr-cart"></i>
                                         <span  id="cart_count">0</span>
                                     </a>
@@ -293,11 +293,11 @@
 <!--================ End footer Area  =================-->
 
 
-@yield('script')
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="{{asset('js/custom.js')}}"></script>
 <script src="{{asset('client/js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{asset('js/custom.js')}}"></script>
 <script src="{{asset('client/js/popper.js')}}"></script>
 <script src="{{asset('client/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('client/js/stellar.js')}}"></script>
@@ -308,10 +308,11 @@
 <script src="{{asset('client/vendors/owl-carousel/owl.carousel.min.js')}}"></script>
 <script src="{{asset('client/js/jquery.ajaxchimp.min.js')}}"></script>
 <script src="{{asset('client/vendors/counter-up/jquery.waypoints.min.js')}}"></script>
-<script src="{{asset('client/vendors/flipclock/timer.js')}}"></script>
+{{--<script src="{{asset('client/vendors/flipclock/timer.js')}}"></script>--}}
 <script src="{{asset('client/vendors/counter-up/jquery.counterup.js')}}"></script>
 <script src="{{asset('client/js/mail-script.js')}}"></script>
-<script src="{{asset('client/js/theme.js')}}"></script>
+{{--<script src="{{asset('client/js/theme.js')}}"></script>--}}
+@yield('script')
 </body>
 
 </html>

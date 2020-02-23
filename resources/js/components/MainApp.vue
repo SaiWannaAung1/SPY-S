@@ -1,13 +1,14 @@
 <template>
+    <div>
+<chat-component></chat-component>
+    </div>
 
 </template>
-
 <script>
+    import chatComponent from "./ChatApp";
     export default {
-        name: "MainApp"
+        components:{
+            chatComponent
+        }
     }
 </script>
-
-<style scoped>
-
-</style>

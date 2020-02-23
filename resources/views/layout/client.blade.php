@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{asset('client/vendors/animate-css/animate.css')}}">
     <link rel="stylesheet" href="{{asset('client/vendors/jquery-ui/jquery-ui.css')}}">
     <!-- main css -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('client/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('client/css/responsive.css')}}">
 
@@ -297,6 +298,7 @@
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="{{asset('client/js/jquery-3.2.1.min.js')}}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{asset('js/custom.js')}}"></script>
 <script src="{{asset('client/js/popper.js')}}"></script>
 <script src="{{asset('client/js/bootstrap.min.js')}}"></script>

@@ -48,6 +48,7 @@ Route::post('/shoppingCart','ShoppingCartController@cart');
 
 ////////////customer/////////////////////////////////////////////////////
 Route::get('/customer/chat','CustomerChartController@index');
+Route::get('/userlist','MessagesController@user_list')->name('user.list');
 
 ////////////end customer/////////////////////////////////////////////////////
 Auth::routes();

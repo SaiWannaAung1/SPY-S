@@ -64,6 +64,7 @@
 </div>
 <!-- END MESSAGE BOX-->
 @yield('script')
+<script src="{{ asset('js/app.js') }}" async defer></script>
 <!-- START PRELOADS -->
 <audio id="audio-alert" src="{{asset('admin/audio/alert.mp3')}}" preload="auto"></audio>
 <audio id="audio-fail" src="{{asset('admin/audio/fail.mp3')}}" preload="auto"></audio>

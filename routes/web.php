@@ -21,6 +21,7 @@ return view("home");
 Route::get('/supplier/create_product','ProductsController@index');
 Route::get('/catSelete','ProductsController@catSelete');
 Route::post('/supplier/create_product','ProductsController@store');
+Route::get('/supplier/chat','SupplierChartController@index');
 ////////////end supplier/////////////////////////////////////////////////////
 
 ////////////admin/////////////////////////////////////////////////////
@@ -45,7 +46,10 @@ Route::post('/shoppingCart','ShoppingCartController@cart');
 ////////////public/////////////////////////////////////////////////////
 //Route::post( '/createuser', 'Auth\RegisterController@userCreate' )->name( 'createuser' );
 
+////////////customer/////////////////////////////////////////////////////
+Route::get('/customer/chat','CustomerChartController@index');
 
+////////////end customer/////////////////////////////////////////////////////
 Auth::routes();
 
 

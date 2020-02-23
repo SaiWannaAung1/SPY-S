@@ -43,6 +43,7 @@ class RegisterController extends Controller
 
         $slug = uniqid();
         if ($data['shopName']==null){
+            $user = "customer";
             $file = $data['image'];
             $filename = uniqid().'_'.$file->getClientOriginalName();
             $file->move(public_path().'/uploads/',$filename);
@@ -51,28 +52,35 @@ class RegisterController extends Controller
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'slug' => $slug,
-                'image' => $filename,
-                'gender' => trim($data['gender']),
                 'address' => $data['address'],
+                'gender' => trim($data['gender']),
+                'role' => $user,
+                'shop_name' => $data['shopName'],
+                'image' => $filename,
+
                 'password' => Hash::make( $data['password'])
+
             ]);
-        }else{
+        }
+        else{
+            $user = "supplier";
             $file = $data['image'];
             $filename = uniqid().'_'.$file->getClientOriginalName();
             $file->move(public_path().'/uploads/',$filename);
 
-            return Suppliers::create([
+            return User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'slug' => $slug,
-                'image' => $filename,
-                'shop_name' => $data['shopName'],
                 'address' => $data['address'],
+                'gender' => "shop",
+                'role' => $user,
+                'shop_name' => $data['shopName'],
+                'image' => $filename,
+
                 'password' => Hash::make( $data['password'])
             ]);
         }
-
-
 
 
     }

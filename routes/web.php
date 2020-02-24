@@ -49,6 +49,8 @@ Route::post('/shoppingCart','ShoppingCartController@cart');
 ////////////customer/////////////////////////////////////////////////////
 Route::get('/customer/chat','CustomerChartController@index');
 Route::get('/userlist','MessagesController@user_list')->name('user.list');
+Route::get('/usermessage/{id}','MessagesController@user_message')->name('user.message');
+Route::post('senemessage','MessagesController@send_message')->name('user.message.send');
 
 ////////////end customer/////////////////////////////////////////////////////
 Auth::routes();

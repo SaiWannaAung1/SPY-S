@@ -30,21 +30,9 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vuex from 'vuex';
 import storeVuex from "./store/index";
-
+import filter from './filter'
 Vue.use(Vuex)
 const store = new Vuex.Store(storeVuex);
-// const store = new Vuex.Store({
-//     state: {
-//         count: 0
-//     },
-//     mutations: {
-//         increment (state) {
-//             state.count++
-//         }
-//     }
-// })
-
-
 Vue.component('main-app', require('./components/MainApp.vue').default);
 
 

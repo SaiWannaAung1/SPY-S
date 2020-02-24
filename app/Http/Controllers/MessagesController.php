@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Messages;
 use App\User;
 use Illuminate\Http\Request;
 
 class MessagesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function user_list()
     {
 
-        $users = User::latest()->get();
+        $users = User::latest()->where('id','!=',auth()->user()->id)->get();
         if (\Request::ajax()){
             return response()->json($users,200);
         }
@@ -25,67 +25,45 @@ class MessagesController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+
+    public function user_message($id=null)
     {
-        //
+            $user = User::findOrFail($id);
+            $messages = Messages::where(function ($q) use($id){
+                $q->where('from',auth()->user()->id);
+                $q->where('to',$id);
+            })->orWhere(function($q) use ($id){
+                    $q->where('from',$id);
+                    $q->where('to',auth()->user()->id);
+            })->with('user')->get();
+
+            return response()->json([
+                    'messages' => $messages,
+                    'user'=> $user,
+            ]
+            );
+
+//        return abort(404);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+
+    public function send_message(Request $request)
     {
-        //
+       return $request->all();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //

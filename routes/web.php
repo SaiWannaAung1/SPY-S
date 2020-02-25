@@ -21,7 +21,8 @@ return view("home");
 Route::get('/supplier/create_product','ProductsController@index');
 Route::get('/catSelete','ProductsController@catSelete');
 Route::post('/supplier/create_product','ProductsController@store');
-Route::get('/supplier/chat','SupplierChartController@index');
+Route::get('/supplier/profile','SupplierProfileController@index');
+Route::post('/supplier/profile','SupplierProfileController@update');
 ////////////end supplier/////////////////////////////////////////////////////
 
 ////////////admin/////////////////////////////////////////////////////
@@ -42,6 +43,7 @@ Route::get('/products/{slug}','ProductsDetailController@index');
 Route::get('/auth/usersRegister','UsersRegisterController@index');
 Route::get('/shoppingCart','ShoppingCartController@index');
 Route::post('/shoppingCart','ShoppingCartController@cart');
+Route::post('/payout','ShoppingCartController@payout');
 
 ////////////public/////////////////////////////////////////////////////
 //Route::post( '/createuser', 'Auth\RegisterController@userCreate' )->name( 'createuser' );

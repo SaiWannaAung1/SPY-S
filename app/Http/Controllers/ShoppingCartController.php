@@ -3,16 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\PaymentDetails;
+use App\Payments;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ShoppingCartController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
             return view("client.shoppingCart");
@@ -34,64 +33,43 @@ class ShoppingCartController extends Controller
     }
 
 
-    public function create()
+    public function payout(Request $request)
     {
-        //
+        date_default_timezone_set("Asia/Yangon");
+        $items = $request->all();
+        $c_date =  date("Y-m-d");
+        $order_number = uniqid();
+        $total = 0;
+        $month = date('F');
+        $customer_id=1;
+        if (Auth::check())
+        {
+            $customer_id =   Auth::user()->id;
+        }
+
+        foreach ($items as $item){
+            $total += $item->quality * $item->price;
+            PaymentDetails::create([
+                'customer_id' => $customer_id,
+                'supplier_id' => $item->supplier_id,
+                'supplier_id' => $item->supplier_id,
+                'qty' => $item->quality,
+                'product_name' => $item->name,
+                'unit_price' => $item->price,
+                'total_price' => $total,
+                'Month' => $month,
+                'Month' => $month
+
+            ]);
+        }
+        Payments::create([
+            'customer_id' => $customer_id,
+            'order_no' => $order_number,
+            'date' => $c_date
+        ]);
+
+
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

@@ -31,10 +31,23 @@
                                    <td colspan="5">
                                        <a class="warncan_btn" href="/shoppingCart" onclick="clearCart()">Clear Cart</a>
                                    </td>
-
-                                   <td>
-                                       <a class="main_btn" href="#">Apply</a>
-                                   </td>
+                                   @if(\Illuminate\Support\Facades\Auth::check())
+                                        <form action="/payment/stripe" method="post" style="display: none;" id="stripeForm" >
+                                           <script
+                                               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                               data-key="pk_test_NyQgIgdn3LrhUFe3xN8yHFrE009lbtBzPb"
+                                               data-name="Myan Shop"
+                                               data-description="Need to wait a few day!"
+                                               data-image="https://plibmm.online/img/core-img/logo.png"
+                                               data-email="saiwannaaung@gmail.com"
+                                               data-zip-code="true">
+                                           </script>
+                                       </form>
+                                   @else
+                                       <td>
+                                           <a class="main_btn" href="#">Apply</a>
+                                       </td>
+                                   @endif
                                </tr>
                            </tfooter>
                        </table>
@@ -44,9 +57,6 @@
        </section>
    </div>
     <!--================End Cart Area =================-->
-
-
-
 
 @endsection
 
@@ -175,10 +185,11 @@
                 $('#checkOutBtn').css("display","none");
                 $('#stripeTR').css("visibility","visible");
                 $('#stripeForm').css("display","block");
-                // clearCart();
-                // clearProduct();
-                // showCartItem();
-                // showProducts([]);
+                clearCart();
+                clearProduct();
+                showCartItem();
+                showProducts([]);
+
             },
             error:function (response) {
                 console.log(response.responseText);

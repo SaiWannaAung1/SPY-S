@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class SupplierChartController extends Controller
+class SupplierProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,10 @@ class SupplierChartController extends Controller
         if (Auth::check())
         {
             if (Auth::user()->role == "supplier" ) {
+              $id =   Auth::user()->id;
+              $user =   User::findOrFail($id);
 
-                return view('supplier.supplierchat');
+                return view('supplier.supplierprofile',compact('user'));
             }else{
                 return redirect('/');
             }
@@ -77,9 +80,18 @@ class SupplierChartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $slug = $request->input('shop_slug');
+            $user = User::whereSlug($slug)->first();
+        $user->shop_name = $request->input('shop_name');
+        $user->name = $request->input('name');
+        $user->address = $request->input('address');
+        $user->publishable_key = $request->input('publishable_key');
+        $user->secret_key = $request->input('secret_key');
+        $user->save();
+        return redirect(action('SupplierProfileController@index')) ->with('status','The Profile has been updated');
+
     }
 
     /**

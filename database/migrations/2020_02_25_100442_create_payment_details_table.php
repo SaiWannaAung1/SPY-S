@@ -23,7 +23,8 @@ class CreatePaymentDetailsTable extends Migration
             $table->double('unit_price');
             $table->double('total_price');
             $table->string('Month');
-            $table->year('Year');
+            $table->string('Year');
+            $table->string('order_no');
             $table->timestamps();
         });
     }

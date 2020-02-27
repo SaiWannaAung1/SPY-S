@@ -9,33 +9,35 @@ class AdminReportsController extends Controller
 
     public function supplier_daily_sale()
     {
-
-        $products = DB::table('payment_details')
-            ->select('Month',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
-            ->groupBy('Month')
+        $id =1;
+        $datas = DB::table('payment_details')
+            ->select('date',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
+            ->groupBy('date')
             ->get();
 
-        dd($products);
+        return view('admin.daily_supplier_sales',compact('datas','id'));
     }
 
     public function supplier_monthly_sale()
     {
-        $products = DB::table('payment_details')
-            ->select('Month',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
-            ->groupBy('Month')
+        $id =1;
+        $datas = DB::table('payment_details')
+            ->select('Month','Year',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
+            ->groupBy('Month','Year')
             ->get();
 
-        dd($products);
+        return view('admin.monthly_supplier_sales',compact('datas','id'));
     }
 
     public function supplier_yearly_sale()
     {
-        $products = DB::table('payment_details')
-            ->select('Month',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
-            ->groupBy('Month')
+        $id =1;
+        $datas = DB::table('payment_details')
+            ->select('Year',DB::raw('SUM(qty) as quantity'),DB::raw('SUM(total_price) as total_price') )
+            ->groupBy('Year')
             ->get();
 
-        dd($products);
+        return view('admin.yearly_supplier_sales',compact('datas','id'));
     }
 
 

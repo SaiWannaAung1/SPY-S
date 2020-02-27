@@ -24,6 +24,7 @@ class CreatePaymentDetailsTable extends Migration
             $table->double('total_price');
             $table->string('Month');
             $table->string('Year');
+            $table->date('date');
             $table->string('order_no');
             $table->timestamps();
         });

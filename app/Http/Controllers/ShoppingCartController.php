@@ -45,6 +45,7 @@ class ShoppingCartController extends Controller
         $order_number = uniqid();
         $total = 0;
         $month = date('F');
+        $year = date('Y');
         $customer_id=1;
         if (Auth::check())
         {
@@ -65,7 +66,8 @@ class ShoppingCartController extends Controller
                     'total_price' => $total,
                     'payment_id' => 1,
                     'Month' => $month,
-                    'Year' => $month,
+                    'Year' => $year,
+                    'date' => $c_date,
                     'order_no' => $order_number
                 ]);
 

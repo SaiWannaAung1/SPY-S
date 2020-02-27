@@ -45,6 +45,8 @@ Route::post('/admin/sub_category/update','SubCategoriesController@update');
 Route::get('/admin/supplier_daily_sale','AdminReportsController@supplier_daily_sale');
 Route::get('/admin/supplier_monthly_sale','AdminReportsController@supplier_monthly_sale');
 Route::get('/admin/supplier_yearly_sale','AdminReportsController@supplier_yearly_sale');
+Route::get('/admin/user_management','UsersManagementController@view_user');
+Route::post('/admin/user_management/{slug}/{status?}/update','UsersManagementController@update_user');
 ////////////admin/////////////////////////////////////////////////////
 
 ////////////public/////////////////////////////////////////////////////
